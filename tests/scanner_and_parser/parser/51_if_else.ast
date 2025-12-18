@@ -1,0 +1,16 @@
+SEQ
+  IF
+    FALSE
+    SEQ
+      CALL
+        IDENT printf
+        ARGS
+          STRING "no";"
+    ELSE
+      SEQ
+        CALL
+          IDENT printf
+          ARGS
+            STRING "yes";"
+
+

@@ -1,0 +1,23 @@
+SEQ
+  IF
+    FALSE
+    SEQ
+      CALL
+        IDENT printf
+        ARGS
+          STRING "a";"
+    IF
+      TRUE
+      SEQ
+        CALL
+          IDENT printf
+          ARGS
+            STRING "b";"
+      ELSE
+        SEQ
+          CALL
+            IDENT printf
+            ARGS
+              STRING "c";"
+
+

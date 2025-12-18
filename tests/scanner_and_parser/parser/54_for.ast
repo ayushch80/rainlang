@@ -1,0 +1,21 @@
+SEQ
+  FOR
+    DECL
+      IDENT i
+      VARIABLE
+      TYPE int
+      INT 0
+    BINOP <
+      IDENT i
+      INT 10
+    BINOP +
+      IDENT i
+      INT 1
+    SEQ
+      CALL
+        IDENT printf
+        ARGS
+          STRING "%d\n","
+          IDENT i
+
+

@@ -1,0 +1,5 @@
+var a int;
+const b deci;
+var c str;
+var d char;
+var e bool;

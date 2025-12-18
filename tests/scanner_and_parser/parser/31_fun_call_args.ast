@@ -1,0 +1,8 @@
+SEQ
+  CALL
+    IDENT printf
+    ARGS
+      STRING "value = %d\n","
+      INT 42
+
+

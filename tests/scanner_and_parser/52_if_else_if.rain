@@ -1,0 +1,7 @@
+if false {
+    printf @ "a";
+} else if true {
+    printf @ "b";
+} else {
+    printf @ "c";
+}

@@ -1,0 +1,18 @@
+SEQ
+  DECL
+    IDENT a
+    VARIABLE
+    TYPE int
+    INT 10
+  DECL
+    IDENT b
+    VARIABLE
+    TYPE decimal
+    DECIMAL 3.140000
+  DECL
+    IDENT c
+    VARIABLE
+    TYPE bool
+    TRUE
+
+

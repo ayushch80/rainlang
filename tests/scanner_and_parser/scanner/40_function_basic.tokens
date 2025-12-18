@@ -1,0 +1,11 @@
+[1] FN fn
+[1] IDENTIFIER main
+[1] LEFT_PAREN (
+[1] RIGHT_PAREN )
+[1] INT int
+[1] LEFT_BRACE {
+[2] RETURN return
+[2] INT_LITERAL 0
+[2] SEMICOLON ;
+[3] RIGHT_BRACE }
+[3] eOF 

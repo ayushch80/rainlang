@@ -1,0 +1,18 @@
+SEQ
+  FUNCTION
+    IDENT add
+    PARAMS
+      PARAM
+        IDENT a
+        TYPE int
+      PARAM
+        IDENT b
+        TYPE int
+    TYPE int
+    SEQ
+      RETURN
+        BINOP +
+          IDENT a
+          IDENT b
+
+

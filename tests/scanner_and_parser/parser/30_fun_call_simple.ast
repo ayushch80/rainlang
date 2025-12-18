@@ -1,0 +1,7 @@
+SEQ
+  CALL
+    IDENT printf
+    ARGS
+      STRING "Hello, World!";"
+
+

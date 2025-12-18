@@ -1,0 +1,18 @@
+[1] FN fn
+[1] IDENTIFIER add
+[1] LEFT_PAREN (
+[1] IDENTIFIER a
+[1] INT int
+[1] COMMA ,
+[1] IDENTIFIER b
+[1] INT int
+[1] RIGHT_PAREN )
+[1] INT int
+[1] LEFT_BRACE {
+[2] RETURN return
+[2] IDENTIFIER a
+[2] PLUS +
+[2] IDENTIFIER b
+[2] SEMICOLON ;
+[3] RIGHT_BRACE }
+[3] eOF 

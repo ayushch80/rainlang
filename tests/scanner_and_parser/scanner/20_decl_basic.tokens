@@ -1,0 +1,21 @@
+[1] VAR var
+[1] IDENTIFIER a
+[1] INT int
+[1] SEMICOLON ;
+[2] CONST const
+[2] IDENTIFIER b
+[2] DECIMAL deci
+[2] SEMICOLON ;
+[3] VAR var
+[3] IDENTIFIER c
+[3] STRING str
+[3] SEMICOLON ;
+[4] VAR var
+[4] IDENTIFIER d
+[4] CHAR char
+[4] SEMICOLON ;
+[5] VAR var
+[5] IDENTIFIER e
+[5] BOOL bool
+[5] SEMICOLON ;
+[5] eOF 

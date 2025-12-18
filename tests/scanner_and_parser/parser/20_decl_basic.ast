@@ -1,0 +1,23 @@
+SEQ
+  DECL
+    IDENT a
+    VARIABLE
+    TYPE int
+  DECL
+    IDENT b
+    CONSTANT
+    TYPE decimal
+  DECL
+    IDENT c
+    VARIABLE
+    TYPE string
+  DECL
+    IDENT d
+    VARIABLE
+    TYPE char
+  DECL
+    IDENT e
+    VARIABLE
+    TYPE bool
+
+

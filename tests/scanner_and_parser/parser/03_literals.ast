@@ -1,0 +1,9 @@
+SEQ
+  INT 123
+  DECIMAL 12.340000
+  CHAR 'c'
+  STRING "hello";"
+  TRUE
+  FALSE
+
+

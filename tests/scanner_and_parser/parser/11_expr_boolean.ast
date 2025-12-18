@@ -1,0 +1,29 @@
+SEQ
+  BINOP &&
+    TRUE
+    FALSE
+  BINOP ||
+    TRUE
+    FALSE
+  UNOP !
+    TRUE
+  BINOP <
+    INT 1
+    INT 2
+  BINOP <=
+    INT 1
+    INT 2
+  BINOP >
+    INT 3
+    INT 1
+  BINOP >=
+    INT 3
+    INT 1
+  BINOP ==
+    INT 1
+    INT 1
+  BINOP !=
+    INT 1
+    INT 2
+
+

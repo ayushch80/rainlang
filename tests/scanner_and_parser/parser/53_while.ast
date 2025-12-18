@@ -1,0 +1,18 @@
+SEQ
+  DECL
+    IDENT i
+    VARIABLE
+    TYPE int
+    INT 0
+  WHILE
+    BINOP <
+      IDENT i
+      INT 5
+    SEQ
+      ASSIGN
+        IDENT i
+        BINOP +
+          IDENT i
+          INT 1
+
+

@@ -1,0 +1,59 @@
+fn factorial(n int) int {
+    if n <= 1 {
+        return 1;
+    } else {
+        return n * (factorial @ (n - 1));
+    }
+}
+
+fn is_even(x int) bool {
+    return x % 2 == 0;
+}
+
+fn main() int {
+    // declarations
+    var i int = 0;
+    var result int;
+    const limit int = 10;
+
+    // while loop
+    while i < limit {
+        i = i + 1;
+    }
+
+    // for loop
+    for var j int = 0; j < limit; j + 1 {
+        if j % 5 == 0 {
+            if j % 3 == 0 {
+                printf @ "FizzBuzz\n";
+            } else {
+                printf @ "Buzz\n";
+            }
+        } else if j % 3 == 0 {
+            printf @ "Fizz\n";
+        } else {
+            printf @ "%d\n", j;
+        }
+    }
+
+    // function calls + assignment
+    result = factorial @ 5;
+
+    // boolean logic
+    if is_even @ result && true || false {
+        printf @ "Result is even: %d\n", result;
+    } else {
+        printf @ "Result is odd: %d\n", result;
+    }
+
+    // literals
+    printf @ "int=%d dec=%f char=%c str=%s bool=%d nope=%d\n",
+        42,
+        3.14,
+        'A',
+        "hello",
+        true,
+        nope;
+
+    return 0;
+}

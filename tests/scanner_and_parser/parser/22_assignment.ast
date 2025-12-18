@@ -1,0 +1,18 @@
+SEQ
+  DECL
+    IDENT a
+    VARIABLE
+    TYPE int
+    INT 0
+  ASSIGN
+    IDENT a
+    BINOP +
+      IDENT a
+      INT 1
+  ASSIGN
+    IDENT a
+    BINOP *
+      IDENT a
+      INT 2
+
+
