@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-BIN=./build-linux/rainlang
+BIN=./build/rainlang
 TESTDIR=tests/scanner_and_parser
 
 FAILED=0
