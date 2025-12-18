@@ -23,7 +23,7 @@ void yyerror(const char *s);
 
 %token
     LEFT_PAREN RIGHT_PAREN LEFT_BRACE RIGHT_BRACE
-    COMMA DOT SEMICOLON AT
+    LEFT_BRACKET RIGHT_BRACKET COMMA DOT SEMICOLON AT
     STRING CHAR DECIMAL INT BOOL
     IF ELSE WHILE FOR RETURN VAR CONST FN NOPE
     eOF
@@ -45,7 +45,8 @@ void yyerror(const char *s);
     arg ident return_stmt or_expr and_expr
     equality comparison add_expr bool
     unary fun params param if_stmt else_stmt
-    for_stmt while_stmt assign
+    for_stmt while_stmt assign array_type
+    array_access array_literal
 
 %%
 
@@ -57,6 +58,11 @@ program:
 ident:
       IDENTIFIER
         { $$ = ast_ident($1); }
+;
+
+array_access:
+      IDENTIFIER LEFT_BRACKET expr RIGHT_BRACKET
+        { $$ = ast_array_ident($1, $3); }
 ;
 
 fun_call:
@@ -132,6 +138,8 @@ stmt:
 assign:
       ident EQUAL arg
         { $$ = ast_assign($1, $3); }
+    | array_access EQUAL arg
+        { $$ = ast_assign($1, $3); }
 ;
 
 for_stmt:
@@ -184,9 +192,9 @@ param:
 ;
 
 decl:
-      specifier ident type
+      specifier ident array_type
         { $$ = ast_decl($1, $2, $3); }
-    | specifier ident type EQUAL expr
+    | specifier ident array_type EQUAL expr
         { $$ = ast_decl_expr($1, $2, $3, $5); }
 ;
 
@@ -197,8 +205,20 @@ specifier:
         { $$ = ast_specifier_const(); }
 ;
 
+array_type:
+      type LEFT_BRACKET expr RIGHT_BRACKET
+        { $$ = ast_type_array($1, $3); }
+    | type
+        { $$ = $1; }
+;
+
+array_literal:
+    LEFT_BRACKET args_list RIGHT_BRACKET
+        { $$ = ast_array($2); }
+;
+
 type:
-      INT
+    | INT
         { $$ = ast_type_int(); }
     | DECIMAL
         { $$ = ast_type_decimal(); }
@@ -298,10 +318,14 @@ factor:
         { $$ = ast_char($1); }
     | STRING_LITERAL
         { $$ = ast_string($1); }
+    | array_literal
+        { $$ = $1; }
     | bool
         { $$ = $1; }
     | NOPE
         { $$ = ast_nope(); }
+    | array_access
+        { $$  = $1; }
     | ident
         { $$ = $1; }
     | LEFT_PAREN expr RIGHT_PAREN
@@ -321,6 +345,8 @@ int yylex(void) {
         case RIGHT_PAREN:       return YY_RIGHT_PAREN;
         case LEFT_BRACE:        return YY_LEFT_BRACE;
         case RIGHT_BRACE:       return YY_RIGHT_BRACE;
+        case LEFT_BRACKET:      return YY_LEFT_BRACKET;
+        case RIGHT_BRACKET:     return YY_RIGHT_BRACKET;
 
         case SEMICOLON:         return YY_SEMICOLON;
         case COMMA:             return YY_COMMA;

@@ -1,27 +1,38 @@
+// Recursive function
 fn factorial(n int) int {
     if n <= 1 {
         return 1;
     } else {
-        return n * (factorial @ (n - 1));
+        return n * factorial @ (n - 1);
     }
 }
 
+// Boolean-returning function
 fn is_even(x int) bool {
     return x % 2 == 0;
 }
 
+// Entry point
 fn main() int {
-    // declarations
+
+    // Basic declarations
     var i int = 0;
     var result int;
     const limit int = 10;
 
-    // while loop
+    // Static array
+    var static_arr int[5] = [1, 2, 3, 4, 5];
+
+    // Runtime-sized array
+    var dynamic_arr int[limit];
+
+    // While loop
     while i < limit {
+        dynamic_arr[i] = i * 2;
         i = i + 1;
     }
 
-    // for loop
+    // For loop
     for var j int = 0; j < limit; j + 1 {
         if j % 5 == 0 {
             if j % 3 == 0 {
@@ -36,17 +47,21 @@ fn main() int {
         }
     }
 
-    // function calls + assignment
+    // Function call + assignment
     result = factorial @ 5;
 
-    // boolean logic
+    // Boolean expressions with calls
     if is_even @ result && true || false {
         printf @ "Result is even: %d\n", result;
     } else {
         printf @ "Result is odd: %d\n", result;
     }
 
-    // literals
+    // Array access
+    printf @ "static_arr[2] = %d\n", static_arr[2];
+    printf @ "dynamic_arr[3] = %d\n", dynamic_arr[3];
+
+    // Literal showcase
     printf @ "int=%d dec=%f char=%c str=%s bool=%d nope=%d\n",
         42,
         3.14,

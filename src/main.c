@@ -121,9 +121,13 @@ int main(int argc, char *argv[]) {
             debugParser = true;
         } else if ((strcmp(argv[i], "--file") == 0 || strcmp(argv[i], "-f") == 0) && i+1 < argc) {
             file = argv[i+1];
+            i++;
         } else if (strcmp(argv[i], "--repl") == 0 || strcmp(argv[i], "-r") == 0) {
             repl = true;
-        } 
+        } else if (i > 0) {
+            printf("Unknown argument %s\n", argv[i]);
+            break;
+        }
     }
 
     if (file != NULL) {

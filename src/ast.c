@@ -56,6 +56,15 @@ AST * ast_ident(Token * ident) {
     return n;
 }
 
+AST * ast_array_ident(Token * ident, AST * index) {
+    AST * n = (AST *) malloc(sizeof(AST));
+    n->kind = AST_ARRAY_ACCESS;
+    
+    n->arr_ident.name = ident;
+    n->arr_ident.index = index;
+    return n;
+}
+
 AST * ast_int(Token * tok) {
     AST * n = malloc(sizeof(AST));
     n->kind = AST_INT;
@@ -105,6 +114,14 @@ AST * ast_bool(Token * tok) {
     n->kind = AST_BOOL;
 
     n->_bool = tok->type == TRUE ? true : false;
+    return n;
+}
+
+AST * ast_array(AST * values) {
+    AST * n = malloc(sizeof(AST));
+    n->kind = AST_ARRAY;
+
+    n->array.values = values;
     return n;
 }
 
@@ -247,6 +264,15 @@ AST * ast_param(AST * name, AST * type) {
     return n;
 }
 
+AST * ast_type_array(AST * type, AST * size) {
+    AST * n = (AST *) malloc(sizeof(AST));
+    n->kind = AST_TYPE_ARRAY;
+    
+    n->array_type.type = type;
+    n->array_type.size = size;
+    return n;
+}
+
 AST * ast_type_int(void) {
     AST * n = (AST *) malloc(sizeof(AST));
     n->kind = AST_TYPE_INT;
@@ -293,6 +319,11 @@ void ast_print(AST *n, int indent) {
         printf("IDENT %s\n", n->ident.name->lexeme);
         break;
 
+    case AST_ARRAY_ACCESS:
+        printf("ARRAY_IDENT %s\n", n->arr_ident.name->lexeme);
+        ast_print(n->arr_ident.index, indent + 1);
+        break;
+
     case AST_INT:
         printf("INT %ld\n", n->_int);
         break;
@@ -315,6 +346,11 @@ void ast_print(AST *n, int indent) {
 
     case AST_BOOL:
         printf("%s\n", n->_bool ? "TRUE" : "FALSE");
+        break;
+
+    case AST_ARRAY:
+        printf("ARRAY_LITERAL\n");
+        ast_print(n->array.values, indent + 1);
         break;
 
     case AST_BINARY:
@@ -432,6 +468,12 @@ void ast_print(AST *n, int indent) {
         }
         break;
 
+    case AST_TYPE_ARRAY:
+        printf("TYPE array\n");
+        ast_print(n->array_type.type, indent + 1);
+        ast_print(n->array_type.size, indent + 1);
+        break;
+
     case AST_TYPE_INT:
         printf("TYPE int\n");
         break;
@@ -459,6 +501,10 @@ void ast_free(AST * n) {
     if (!n) return;
 
     switch (n->kind) {
+    case AST_ARRAY_ACCESS:
+        ast_free(n->arr_ident.index);
+        break;
+
     case AST_INT:
     case AST_DECIMAL:
     case AST_BOOL:
@@ -467,6 +513,10 @@ void ast_free(AST * n) {
 
     case AST_STRING:
         free(n->string);
+        break;
+
+    case AST_ARRAY:
+        free(n->array.values);
         break;
 
     case AST_BINARY:
@@ -535,6 +585,11 @@ void ast_free(AST * n) {
         for (size_t i = 0; i < n->list.count; i++)
             ast_free(n->list.items[i]);
         free(n->list.items);
+        break;
+
+    case AST_TYPE_ARRAY:
+        ast_free(n->array_type.type);
+        ast_free(n->array_type.size);
         break;
 
     default:

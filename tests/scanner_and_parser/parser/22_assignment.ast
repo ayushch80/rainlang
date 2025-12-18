@@ -14,5 +14,28 @@ SEQ
     BINOP *
       IDENT a
       INT 2
+  DECL
+    IDENT a
+    VARIABLE
+    TYPE array
+      TYPE int
+      INT 5
+  ASSIGN
+    ARRAY_IDENT a
+      INT 0
+    INT 10
+  ASSIGN
+    ARRAY_IDENT a
+      INT 1
+    BINOP +
+      ARRAY_IDENT a
+        INT 0
+      INT 5
+  ASSIGN
+    ARRAY_IDENT a
+      BINOP +
+        INT 2
+        INT 1
+    INT 99
 
 

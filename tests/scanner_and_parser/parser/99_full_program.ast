@@ -57,11 +57,36 @@ SEQ
         CONSTANT
         TYPE int
         INT 10
+      DECL
+        IDENT static_arr
+        VARIABLE
+        TYPE array
+          TYPE int
+          INT 5
+        ARRAY_LITERAL
+          ARGS
+            INT 1
+            INT 2
+            INT 3
+            INT 4
+            INT 5
+      DECL
+        IDENT dynamic_arr
+        VARIABLE
+        TYPE array
+          TYPE int
+          IDENT limit
       WHILE
         BINOP <
           IDENT i
           IDENT limit
         SEQ
+          ASSIGN
+            ARRAY_IDENT dynamic_arr
+              IDENT i
+            BINOP *
+              IDENT i
+              INT 2
           ASSIGN
             IDENT i
             BINOP +
@@ -150,6 +175,18 @@ SEQ
               ARGS
                 STRING "Result is odd: %d\n","
                 IDENT result
+      CALL
+        IDENT printf
+        ARGS
+          STRING "static_arr[2] = %d\n","
+          ARRAY_IDENT static_arr
+            INT 2
+      CALL
+        IDENT printf
+        ARGS
+          STRING "dynamic_arr[3] = %d\n","
+          ARRAY_IDENT dynamic_arr
+            INT 3
       CALL
         IDENT printf
         ARGS

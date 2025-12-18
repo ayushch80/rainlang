@@ -8,12 +8,15 @@
 
 typedef enum {
     AST_IDENT,
+    AST_ARRAY_ACCESS,
+
     AST_INT,
     AST_DECIMAL,
     AST_STRING,
     AST_CHAR,
     AST_BOOL,
     AST_NOPE,
+    AST_ARRAY,
 
     AST_BINARY,
     AST_UNARY,
@@ -36,6 +39,7 @@ typedef enum {
     AST_PARAMS,
     AST_ARGS_LIST,
 
+    AST_TYPE_ARRAY,
     AST_TYPE_INT,
     AST_TYPE_DECIMAL,
     AST_TYPE_STRING,
@@ -63,10 +67,21 @@ struct AST {
         char * string;
         void * nope;
 
-        /* AST_INDET */
+        /* AST_IDENT */
         struct {
             Token * name;
         } ident;
+
+        /* AST_ARRAY_ACCESS */
+        struct {
+            Token * name;
+            AST * index;
+        } arr_ident;
+
+        /* AST_ARRAY */
+        struct {
+            AST * values;
+        } array;
 
         /* AST_BINARY */
         struct {
@@ -141,6 +156,12 @@ struct AST {
             AST * cond;
             AST * body;
         } while_loop;
+
+        /* AST_TYPE_ARRAY */
+        struct {
+            AST * type;
+            AST * size;
+        } array_type;
     };
 };
 
@@ -152,12 +173,14 @@ AST * ast_params_list_new(void);
 void ast_params_list_push(AST * list, AST * arg);
 
 AST * ast_ident(Token * ident);
+AST * ast_array_ident(Token * ident, AST * index);
 AST * ast_int(Token * tok);
 AST * ast_decimal(Token * tok);
 AST * ast_char(Token * tok);
 AST * ast_string(Token * tok);
 AST * ast_nope(void);
 AST * ast_bool(Token * tok);
+AST * ast_array(AST * values);
 
 AST * ast_binary(Token * op, AST * l, AST * r);
 AST * ast_unary(Token * op, AST * expr);
@@ -180,6 +203,7 @@ AST * ast_while_loop(AST * cond, AST * body);
 
 AST * ast_param(AST * ident, AST * type);
 
+AST * ast_type_array(AST * type, AST * size);
 AST * ast_type_int(void);
 AST * ast_type_decimal(void);
 AST * ast_type_string(void);
@@ -189,4 +213,4 @@ AST * ast_type_bool(void);
 void ast_print(AST * n, int indent);
 void ast_free(AST * node);
 
-#endif
+#endif //RAINLANG_AST_H

@@ -7,6 +7,7 @@
 #include <string.h>
 
 #include "main.h"
+#include "tokentype.h"
 #include "types.h"
 
 bool isAtEnd(const Scanner * scanner) {
@@ -194,6 +195,12 @@ void scanToken(Scanner * scanner) {
             break;
         case '}':
             addToken(scanner, RIGHT_BRACE, NULL);
+            break;
+        case '[':
+            addToken(scanner, LEFT_BRACKET, NULL);
+            break;
+        case ']':
+            addToken(scanner, RIGHT_BRACKET, NULL);
             break;
         case ',':
             addToken(scanner, COMMA, NULL);

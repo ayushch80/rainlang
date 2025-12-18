@@ -17,5 +17,30 @@ SEQ
         ARGS
           STRING "%d\n","
           IDENT i
+  DECL
+    IDENT arr
+    VARIABLE
+    TYPE array
+      TYPE int
+      INT 5
+  FOR
+    DECL
+      IDENT j
+      VARIABLE
+      TYPE int
+      INT 0
+    BINOP <
+      IDENT j
+      INT 5
+    BINOP +
+      IDENT j
+      INT 1
+    SEQ
+      ASSIGN
+        ARRAY_IDENT arr
+          IDENT j
+        BINOP *
+          IDENT j
+          INT 2
 
 
