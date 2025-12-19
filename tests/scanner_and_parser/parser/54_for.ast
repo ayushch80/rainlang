@@ -15,7 +15,7 @@ SEQ
       CALL
         IDENT printf
         ARGS
-          STRING "%d\n","
+          STRING "%d\n"
           IDENT i
   DECL
     IDENT arr

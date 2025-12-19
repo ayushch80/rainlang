@@ -2,6 +2,6 @@ SEQ
   CALL
     IDENT printf
     ARGS
-      STRING "Hello, World!";"
+      STRING "Hello, World!"
 
 

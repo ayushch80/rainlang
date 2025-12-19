@@ -5,12 +5,12 @@ SEQ
       CALL
         IDENT printf
         ARGS
-          STRING "no";"
+          STRING "no"
     ELSE
       SEQ
         CALL
           IDENT printf
           ARGS
-            STRING "yes";"
+            STRING "yes"
 
 

@@ -2,7 +2,7 @@ SEQ
   CALL
     IDENT printf
     ARGS
-      STRING "%d\n","
+      STRING "%d\n"
       CALL
         IDENT factorial
         ARGS

@@ -76,8 +76,9 @@ void character(Scanner * scanner) {
         exit(67);
     }
 
-    char * value = (char*) malloc(sizeof(char));
-    memcpy(value, scanner->source + scanner->start + 1, size);
+    char * value = (char*) malloc(sizeof(char)*2);
+    value[0] = scanner->source[scanner->start + 1];
+    value[1] = '\0';
 
     addToken(scanner, CHAR_LITERAL, (void *)value);
 }
@@ -95,7 +96,7 @@ void string(Scanner * scanner) {
 
     advance(scanner);
 
-    int size = scanner->current-scanner->start;
+    int size = scanner->current-scanner->start - 2;
     char * value = (char*) malloc((size+1) * sizeof(char));
     memcpy(value, scanner->source + scanner->start + 1, size);
     value[size] = '\0';
@@ -179,6 +180,8 @@ void identifier(Scanner * scanner) {
     } else {
         addToken(scanner, IDENTIFIER, NULL);
     }
+
+    free(text);
 }
 
 void scanToken(Scanner * scanner) {
@@ -241,12 +244,12 @@ void scanToken(Scanner * scanner) {
         case '&':
             if (match(scanner, '&')) {
                 addToken(scanner, LOGICAL_AND, NULL);
-            }
+            } else error(scanner->line, "Unexpected '&'");
             break;
         case '|':
             if (match(scanner, '|')) {
                 addToken(scanner, LOGICAL_OR, NULL);
-            }
+            } else error(scanner->line, "Unexpected '|'");
             break;
         case '/':
             if (match(scanner, '/')) {

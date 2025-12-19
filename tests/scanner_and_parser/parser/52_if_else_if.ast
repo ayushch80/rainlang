@@ -5,19 +5,19 @@ SEQ
       CALL
         IDENT printf
         ARGS
-          STRING "a";"
+          STRING "a"
     IF
       TRUE
       SEQ
         CALL
           IDENT printf
           ARGS
-            STRING "b";"
+            STRING "b"
       ELSE
         SEQ
           CALL
             IDENT printf
             ARGS
-              STRING "c";"
+              STRING "c"
 
 

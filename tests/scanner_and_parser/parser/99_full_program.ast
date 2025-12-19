@@ -122,13 +122,13 @@ SEQ
                   CALL
                     IDENT printf
                     ARGS
-                      STRING "FizzBuzz\n";"
+                      STRING "FizzBuzz\n"
                 ELSE
                   SEQ
                     CALL
                       IDENT printf
                       ARGS
-                        STRING "Buzz\n";"
+                        STRING "Buzz\n"
             IF
               BINOP ==
                 BINOP %
@@ -139,13 +139,13 @@ SEQ
                 CALL
                   IDENT printf
                   ARGS
-                    STRING "Fizz\n";"
+                    STRING "Fizz\n"
               ELSE
                 SEQ
                   CALL
                     IDENT printf
                     ARGS
-                      STRING "%d\n","
+                      STRING "%d\n"
                       IDENT j
       ASSIGN
         IDENT result
@@ -166,35 +166,35 @@ SEQ
           CALL
             IDENT printf
             ARGS
-              STRING "Result is even: %d\n","
+              STRING "Result is even: %d\n"
               IDENT result
         ELSE
           SEQ
             CALL
               IDENT printf
               ARGS
-                STRING "Result is odd: %d\n","
+                STRING "Result is odd: %d\n"
                 IDENT result
       CALL
         IDENT printf
         ARGS
-          STRING "static_arr[2] = %d\n","
+          STRING "static_arr[2] = %d\n"
           ARRAY_IDENT static_arr
             INT 2
       CALL
         IDENT printf
         ARGS
-          STRING "dynamic_arr[3] = %d\n","
+          STRING "dynamic_arr[3] = %d\n"
           ARRAY_IDENT dynamic_arr
             INT 3
       CALL
         IDENT printf
         ARGS
-          STRING "int=%d dec=%f char=%c str=%s bool=%d nope=%d\n","
+          STRING "int=%d dec=%f char=%c str=%s bool=%d nope=%d\n"
           INT 42
           DECIMAL 3.140000
           CHAR 'A'
-          STRING "hello","
+          STRING "hello"
           TRUE
           NOPE
       RETURN
