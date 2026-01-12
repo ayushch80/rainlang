@@ -1,5 +1,0 @@
-[1] IDENTIFIER printf
-[1] AT @
-[1] STRING_LITERAL "Hello, World!"
-[1] SEMICOLON ;
-[1] eOF 

@@ -1,5 +1,0 @@
-if false {
-    printf @ "no";
-} else {
-    printf @ "yes";
-}

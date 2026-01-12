@@ -1,9 +1,0 @@
-SEQ
-  FUNCTION
-    IDENT main
-        TYPE int
-    SEQ
-      RETURN
-        INT 0
-
-

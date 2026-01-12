@@ -1,9 +1,0 @@
-[1] IF if
-[1] TRUE true
-[1] LEFT_BRACE {
-[2] IDENTIFIER printf
-[2] AT @
-[2] STRING_LITERAL "yes"
-[2] SEMICOLON ;
-[3] RIGHT_BRACE }
-[3] eOF 

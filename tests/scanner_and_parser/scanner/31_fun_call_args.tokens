@@ -1,7 +1,0 @@
-[1] IDENTIFIER printf
-[1] AT @
-[1] STRING_LITERAL "value = %d\n"
-[1] COMMA ,
-[1] INT_LITERAL 42
-[1] SEMICOLON ;
-[1] eOF 
