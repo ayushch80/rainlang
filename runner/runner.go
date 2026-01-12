@@ -59,6 +59,22 @@ func (symt *SymbolTable) add(sym Symbol) error {
 	return nil
 }
 
+func (st *SymbolTable) changeValue(name, value string) error {
+	_, err := st.lookupLocal(name)
+	if err != nil {
+		return err
+	}
+
+	for i := range st.Symbols {
+		if st.Symbols[i].Name == name {
+			st.Symbols[i].Value = value
+			return nil
+		}
+	}
+
+	return nil
+}
+
 func computePlus(exprType ir.Type, left, right string) (string, error) {
 	switch exprType {
 	case ir.INT:
@@ -275,7 +291,11 @@ func runAssignExpr(assignExpr p.AssignExpr, st *SymbolTable) error {
 		return err
 	}
 
-	sym.Value = result
+	err = st.changeValue(assignExpr.Target.Lexeme, result)
+	if err != nil {
+		return err
+	}
+	
 	return nil
 }
 
